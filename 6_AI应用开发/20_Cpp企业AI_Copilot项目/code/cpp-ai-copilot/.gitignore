@@ -1,0 +1,11 @@
+/build/
+/build-product/
+/.worktrees/
+/tmp_test_app.env
+/-p/
+
+*.exe
+*.obj
+*.o
+*.log
+

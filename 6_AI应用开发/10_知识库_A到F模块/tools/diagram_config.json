@@ -1,0 +1,558 @@
+{
+  "footer": "\u9605\u8bfb\u65b9\u5f0f\uff1a\u5148\u987a\u7740\u6d41\u7a0b\u56fe\u8d70\u4e00\u904d\u4e1a\u52a1\uff0c\u518d\u56de\u5230\u540c\u540d\u77e5\u8bc6\u70b9\u6587\u4ef6\u67e5\u5b9a\u4e49\u3001\u673a\u5236\u3001\u5751\u70b9\u548c\u9762\u8bd5\u56de\u7b54\u3002",
+  "diagrams": [
+    {
+      "file": "A01_network_flow.png",
+      "title": "A01 \u7f51\u7edc\uff1a\u4e00\u6b21 AI \u95ee\u7b54\u8bf7\u6c42\u600e\u6837\u7a7f\u8fc7\u7f51\u7edc",
+      "subtitle": "\u4ece DNS\u3001TCP\u3001HTTPS\u3001HTTP \u5230 SSE \u6d41\u5f0f\u8fd4\u56de",
+      "steps": [
+        "\u7528\u6237\u63d0\u95ee",
+        "DNS\u89e3\u6790",
+        "TCP\u63e1\u624b",
+        "TLS\u52a0\u5bc6",
+        "HTTP\u8bf7\u6c42",
+        "\u8d1f\u8f7d\u5747\u8861",
+        "RAG\u68c0\u7d22",
+        "\u6a21\u578b\u8c03\u7528",
+        "SSE\u6d41\u5f0f",
+        "\u65ad\u5f00\u91ca\u653e"
+      ],
+      "accent": "#2563eb",
+      "accent2": "#06b6d4"
+    },
+    {
+      "file": "A02_os_flow.png",
+      "title": "A02 \u64cd\u4f5c\u7cfb\u7edf\uff1a\u4e00\u4efd PDF \u5982\u4f55\u88ab\u540e\u53f0\u5904\u7406",
+      "subtitle": "\u4ece\u8fdb\u7a0b\u3001\u7ebf\u7a0b\u3001\u7cfb\u7edf\u8c03\u7528\u5230 Worker \u7ebf\u7a0b\u6c60",
+      "steps": [
+        "\u542f\u52a8\u8fdb\u7a0b",
+        "\u8bf7\u6c42\u7ebf\u7a0b",
+        "\u6d41\u5f0f\u8bfb\u6587\u4ef6",
+        "\u7cfb\u7edf\u8c03\u7528",
+        "\u5199\u5165\u5b58\u50a8",
+        "\u6295\u9012MQ",
+        "Worker\u7ebf\u7a0b\u6c60",
+        "CPU\u89e3\u6790",
+        "IO\u8c03\u6a21\u578b",
+        "\u9501\u9632\u91cd\u590d",
+        "\u72b6\u6001ready"
+      ],
+      "accent": "#7c3aed",
+      "accent2": "#22c55e"
+    },
+    {
+      "file": "A03_mysql_flow.png",
+      "title": "A03 MySQL\uff1a\u6587\u6863\u3001\u4f1a\u8bdd\u548c\u65e5\u5fd7\u5982\u4f55\u843d\u5e93",
+      "subtitle": "\u4ece\u4e8b\u52a1\u3001\u7d22\u5f15\u3001\u9501\u3001MVCC \u5230\u65e5\u5fd7\u8868\u6cbb\u7406",
+      "steps": [
+        "\u4e0a\u4f20\u6587\u6863",
+        "\u5f00\u542f\u4e8b\u52a1",
+        "\u5199document",
+        "\u5199task",
+        "Worker\u52a0\u9501",
+        "\u5199chunk",
+        "\u5411\u91cfchunk_id",
+        "\u4f1a\u8bdd\u6d88\u606f",
+        "\u8c03\u7528\u65e5\u5fd7",
+        "\u6162\u67e5\u8be2\u4f18\u5316"
+      ],
+      "accent": "#0f766e",
+      "accent2": "#f59e0b"
+    },
+    {
+      "file": "A04_redis_flow.png",
+      "title": "A04 Redis\uff1a\u9ad8\u5e76\u53d1\u95ee\u7b54\u5982\u4f55\u7701\u94b1\u6297\u538b",
+      "subtitle": "\u7f13\u5b58\u3001\u9650\u6d41\u3001\u6392\u884c\u699c\u3001\u5206\u5e03\u5f0f\u9501\u4e00\u6b21\u4e32\u8d77\u6765",
+      "steps": [
+        "\u7528\u6237\u63d0\u95ee",
+        "\u989d\u5ea6\u9650\u6d41",
+        "\u67e5\u95ee\u7b54\u7f13\u5b58",
+        "\u7f13\u5b58\u547d\u4e2d",
+        "\u672a\u547d\u4e2dRAG",
+        "\u5199\u7f13\u5b58TTL",
+        "\u70ed\u95e8ZSet",
+        "\u6587\u4ef6\u53bb\u91cd",
+        "\u5206\u5e03\u5f0f\u9501",
+        "\u91ca\u653e\u9501"
+      ],
+      "accent": "#dc2626",
+      "accent2": "#f97316"
+    },
+    {
+      "file": "A05_mq_flow.png",
+      "title": "A05 \u6d88\u606f\u961f\u5217\uff1a500\u9875PDF\u5982\u4f55\u5f02\u6b65\u5165\u5e93",
+      "subtitle": "Producer\u3001Topic\u3001Consumer\u3001\u91cd\u8bd5\u3001\u6b7b\u4fe1\u3001\u5e42\u7b49",
+      "steps": [
+        "\u4e0a\u4f20PDF",
+        "\u5199uploaded",
+        "\u53d1\u9001parse",
+        "Broker\u6301\u4e45\u5316",
+        "Parse\u6d88\u8d39",
+        "\u5207chunk",
+        "\u53d1\u9001embed",
+        "Embedding\u6d88\u8d39",
+        "\u5199\u5411\u91cf\u5e93",
+        "\u5931\u8d25\u91cd\u8bd5",
+        "\u6b7b\u4fe1\u6536\u53e3"
+      ],
+      "accent": "#9333ea",
+      "accent2": "#2563eb"
+    },
+    {
+      "file": "A06_distributed_flow.png",
+      "title": "A06 \u5206\u5e03\u5f0f\uff1a1\u4e07\u4eba\u540c\u65f6\u7528AI\u7cfb\u7edf\u600e\u4e48\u7a33\u4f4f",
+      "subtitle": "\u6ce8\u518c\u53d1\u73b0\u3001\u8d1f\u8f7d\u5747\u8861\u3001\u9650\u6d41\u3001\u7194\u65ad\u3001\u964d\u7ea7\u3001\u8ffd\u8e2a",
+      "steps": [
+        "\u7528\u6237\u9ad8\u5cf0",
+        "\u8d1f\u8f7d\u5747\u8861",
+        "\u670d\u52a1\u53d1\u73b0",
+        "RAG\u96c6\u7fa4",
+        "\u6a21\u578b\u7f51\u5173",
+        "Redis\u9650\u6d41",
+        "\u7194\u65ad\u68c0\u6d4b",
+        "\u964d\u7ea7\u515c\u5e95",
+        "trace\u8ffd\u8e2a",
+        "\u7070\u5ea6\u914d\u7f6e"
+      ],
+      "accent": "#1d4ed8",
+      "accent2": "#16a34a"
+    },
+    {
+      "file": "A07_algo_flow.png",
+      "title": "A07 \u7b97\u6cd5\uff1a\u4ece100\u4e07\u4e2achunk\u627eTop5",
+      "subtitle": "\u6570\u7ec4\u3001\u54c8\u5e0c\u3001Set\u3001\u5806\u3001\u6392\u5e8f\u3001\u6811\u3001\u56fe\u3001\u6ed1\u7a97",
+      "steps": [
+        "\u95ee\u9898token",
+        "\u5411\u91cf\u6570\u7ec4",
+        "\u53ec\u56de\u5019\u9009",
+        "Hash\u6620\u5c04",
+        "Set\u53bb\u91cd",
+        "\u5806TopK",
+        "Rerank\u6392\u5e8f",
+        "\u6811\u72b6\u6587\u6863",
+        "DAG\u6d41\u7a0b",
+        "\u6ed1\u7a97\u88c1\u526a"
+      ],
+      "accent": "#0891b2",
+      "accent2": "#84cc16"
+    },
+    {
+      "file": "B01_language_flow.png",
+      "title": "B01 \u7f16\u7a0b\u8bed\u8a00\uff1aJava/Python/Go\u600e\u6837\u5206\u5de5",
+      "subtitle": "\u4f01\u4e1a\u540e\u7aef\u3001AI Pipeline\u3001\u9ad8\u5e76\u53d1\u7f51\u5173\u5404\u53f8\u5176\u804c",
+      "steps": [
+        "\u4e1a\u52a1\u4e3b\u7cfb\u7edf",
+        "Java\u540e\u7aef",
+        "\u96c6\u5408\u4e0e\u7ebf\u7a0b\u6c60",
+        "JVM\u5185\u5b58",
+        "AI\u539f\u578b",
+        "Python\u811a\u672c",
+        "async\u8c03\u7528",
+        "Go\u7f51\u5173",
+        "\u7edf\u4e00API",
+        "\u9879\u76ee\u4ea4\u4ed8"
+      ],
+      "accent": "#ea580c",
+      "accent2": "#2563eb"
+    },
+    {
+      "file": "B02_web_flow.png",
+      "title": "B02 Web\u6846\u67b6\uff1a/chat/stream\u8bf7\u6c42\u600e\u4e48\u8d70",
+      "subtitle": "Filter\u3001Controller\u3001Service\u3001Client\u3001SSE\u3001\u5f02\u5e38\u5904\u7406",
+      "steps": [
+        "HTTP\u8bf7\u6c42",
+        "Filter\u8ffd\u8e2a",
+        "\u9274\u6743\u62e6\u622a",
+        "Controller",
+        "\u53c2\u6570\u6821\u9a8c",
+        "Service\u7f16\u6392",
+        "RAG\u670d\u52a1",
+        "\u6a21\u578bClient",
+        "SSE\u8fd4\u56de",
+        "\u5f02\u5e38\u5904\u7406"
+      ],
+      "accent": "#4f46e5",
+      "accent2": "#14b8a6"
+    },
+    {
+      "file": "B03_api_flow.png",
+      "title": "B03 API\u8bbe\u8ba1\uff1a\u77e5\u8bc6\u5e93\u7cfb\u7edf\u63a5\u53e3\u600e\u4e48\u4e32",
+      "subtitle": "\u8d44\u6e90\u3001\u7edf\u4e00\u54cd\u5e94\u3001\u9519\u8bef\u7801\u3001\u5f02\u6b65\u4efb\u52a1\u3001\u6d41\u5f0f\u63a5\u53e3",
+      "steps": [
+        "\u521b\u5efa\u77e5\u8bc6\u5e93",
+        "\u4e0a\u4f20\u6587\u6863",
+        "\u8fd4\u56detask_id",
+        "\u67e5\u8be2\u72b6\u6001",
+        "ready\u5224\u65ad",
+        "\u53d1\u8d77\u95ee\u7b54",
+        "SSE\u6d41\u5f0f",
+        "\u5386\u53f2\u6d88\u606f",
+        "\u7edf\u4e00\u9519\u8bef",
+        "\u7248\u672c\u63a7\u5236"
+      ],
+      "accent": "#0ea5e9",
+      "accent2": "#22c55e"
+    },
+    {
+      "file": "B04_auth_flow.png",
+      "title": "B04 \u8ba4\u8bc1\u9274\u6743\uff1a\u8d22\u52a1\u77e5\u8bc6\u5e93\u5982\u4f55\u4e0d\u8d8a\u6743",
+      "subtitle": "\u8ba4\u8bc1\u8eab\u4efd\u3001RBAC/ABAC\u3001metadata filter\u3001\u5de5\u5177\u9274\u6743",
+      "steps": [
+        "\u7528\u6237\u767b\u5f55",
+        "\u89e3\u6790JWT",
+        "\u67e5\u8be2\u89d2\u8272",
+        "\u5224\u65adACL",
+        "\u6784\u9020filter",
+        "\u6743\u9650\u5185\u68c0\u7d22",
+        "\u5f15\u7528\u590d\u6838",
+        "\u5de5\u5177\u767d\u540d\u5355",
+        "\u8d44\u6e90\u9274\u6743",
+        "\u5ba1\u8ba1\u65e5\u5fd7"
+      ],
+      "accent": "#be123c",
+      "accent2": "#7c3aed"
+    },
+    {
+      "file": "B05_test_flow.png",
+      "title": "B05 \u6d4b\u8bd5\u5de5\u7a0b\uff1aPrompt\u6539\u4e86\u600e\u4e48\u6562\u4e0a\u7ebf",
+      "subtitle": "\u5355\u6d4b\u3001Mock\u3001\u63a5\u53e3\u3001\u53ec\u56de\u3001\u56de\u5f52\u3001\u5b89\u5168\u3001\u538b\u6d4b",
+      "steps": [
+        "\u4fee\u6539Prompt",
+        "\u5355\u5143\u6d4b\u8bd5",
+        "Mock\u6a21\u578b",
+        "\u63a5\u53e3\u6d4b\u8bd5",
+        "\u53ec\u56de\u8bc4\u6d4b",
+        "Prompt\u56de\u5f52",
+        "\u5b89\u5168\u6837\u4f8b",
+        "\u538b\u6d4b\u6210\u672c",
+        "\u7070\u5ea6\u53d1\u5e03",
+        "BadCase\u95ed\u73af"
+      ],
+      "accent": "#475569",
+      "accent2": "#16a34a"
+    },
+    {
+      "file": "C01_ml_flow.png",
+      "title": "C01 \u673a\u5668\u5b66\u4e60\uff1a\u8bad\u7ec3\u5ba2\u670d\u610f\u56fe\u8bc6\u522b\u5668",
+      "subtitle": "\u76d1\u7763\u5b66\u4e60\u3001\u5206\u7c7b\u3001\u6570\u636e\u96c6\u3001\u8fc7\u62df\u5408\u3001Precision/Recall",
+      "steps": [
+        "\u6536\u96c6\u95ee\u9898",
+        "\u4eba\u5de5\u6807\u6ce8",
+        "\u5212\u5206\u6570\u636e\u96c6",
+        "\u8bad\u7ec3\u5206\u7c7b\u5668",
+        "\u9a8c\u8bc1\u8c03\u53c2",
+        "\u6d4b\u8bd5\u8bc4\u4f30",
+        "\u770bP/R/F1",
+        "\u8865badcase",
+        "\u4e0a\u7ebf\u5206\u7c7b",
+        "\u5206\u6d41\u5904\u7406"
+      ],
+      "accent": "#7c2d12",
+      "accent2": "#ca8a04"
+    },
+    {
+      "file": "C02_dl_nlp_flow.png",
+      "title": "C02 \u6df1\u5ea6\u5b66\u4e60\u4e0eNLP\uff1a\u7b80\u5386\u5982\u4f55\u7ed3\u6784\u5316",
+      "subtitle": "\u5206\u8bcd\u3001\u5411\u91cf\u3001\u795e\u7ecf\u7f51\u7edc\u3001NER\u3001\u6458\u8981\u3001GPU",
+      "steps": [
+        "\u7b80\u5386\u6587\u672c",
+        "Tokenizer",
+        "\u5411\u91cf\u8868\u793a",
+        "\u524d\u5411\u4f20\u64ad",
+        "\u5b9e\u4f53\u8bc6\u522b",
+        "JSON\u8f93\u51fa",
+        "\u635f\u5931\u51fd\u6570",
+        "\u53cd\u5411\u4f20\u64ad",
+        "\u4f18\u5316\u5668",
+        "GPU\u63a8\u7406"
+      ],
+      "accent": "#6d28d9",
+      "accent2": "#0891b2"
+    },
+    {
+      "file": "C03_transformer_embedding_flow.png",
+      "title": "C03 Transformer\u4e0eEmbedding\uff1a\u8bed\u4e49\u68c0\u7d22\u4e3a\u4ec0\u4e48\u80fd\u61c2\u540c\u4e49\u95ee\u6cd5",
+      "subtitle": "Token\u3001Attention\u3001Embedding\u3001\u76f8\u4f3c\u5ea6\u3001ANN\u3001RAG",
+      "steps": [
+        "\u7528\u6237\u95ee\u9898",
+        "Tokenizer",
+        "\u4f4d\u7f6e\u7f16\u7801",
+        "SelfAttention",
+        "Query\u5411\u91cf",
+        "Chunk\u5411\u91cf",
+        "\u76f8\u4f3c\u5ea6",
+        "ANN TopK",
+        "\u62fcPrompt",
+        "GPT\u751f\u6210"
+      ],
+      "accent": "#1e40af",
+      "accent2": "#65a30d"
+    },
+    {
+      "file": "D01_model_call_flow.png",
+      "title": "D01 \u6a21\u578b\u8c03\u7528\uff1a\u4e00\u6b21LLM\u8bf7\u6c42\u7684\u540e\u7aef\u5168\u94fe\u8def",
+      "subtitle": "messages\u3001\u53c2\u6570\u3001\u8d85\u65f6\u3001\u6d41\u5f0f\u3001token\u3001\u65e5\u5fd7",
+      "steps": [
+        "\u7528\u6237\u95ee\u9898",
+        "\u53c2\u6570\u6821\u9a8c",
+        "\u7ec4\u88c5messages",
+        "\u8bbe\u7f6e\u53c2\u6570",
+        "ModelClient",
+        "\u9996token\u8d85\u65f6",
+        "\u63a5\u6536delta",
+        "SSE\u8f6c\u53d1",
+        "\u7edf\u8ba1token",
+        "\u4fdd\u5b58\u65e5\u5fd7"
+      ],
+      "accent": "#2563eb",
+      "accent2": "#f97316"
+    },
+    {
+      "file": "D02_prompt_flow.png",
+      "title": "D02 Prompt\u5de5\u7a0b\uff1a\u8ba9\u6a21\u578b\u57fa\u4e8e\u8d44\u6599\u56de\u7b54",
+      "subtitle": "\u89d2\u8272\u3001\u4efb\u52a1\u3001\u4e0a\u4e0b\u6587\u3001\u7ea6\u675f\u3001\u683c\u5f0f\u3001\u7248\u672c\u3001\u6821\u9a8c",
+      "steps": [
+        "\u7528\u6237\u95ee\u9898",
+        "\u68c0\u7d22\u8d44\u6599",
+        "\u586b\u6a21\u677f",
+        "\u89d2\u8272\u4efb\u52a1",
+        "\u7ea6\u675f\u62d2\u7b54",
+        "\u8f93\u51fa\u683c\u5f0f",
+        "\u8c03\u7528\u6a21\u578b",
+        "\u6821\u9a8c\u5f15\u7528",
+        "\u8bb0\u5f55\u7248\u672c",
+        "\u8fd4\u56de\u7b54\u6848"
+      ],
+      "accent": "#9333ea",
+      "accent2": "#14b8a6"
+    },
+    {
+      "file": "D03_rag_flow.png",
+      "title": "D03 RAG\uff1a\u4ece\u6587\u6863\u5165\u5e93\u5230\u5728\u7ebf\u95ee\u7b54",
+      "subtitle": "\u89e3\u6790\u3001chunk\u3001Embedding\u3001\u68c0\u7d22\u3001Rerank\u3001\u751f\u6210\u3001\u5f15\u7528",
+      "steps": [
+        "\u4e0a\u4f20\u6587\u6863",
+        "\u89e3\u6790\u6e05\u6d17",
+        "\u5207Chunk",
+        "Embedding",
+        "\u5199\u5411\u91cf\u5e93",
+        "\u7528\u6237\u63d0\u95ee",
+        "Query\u6539\u5199",
+        "\u6df7\u5408\u68c0\u7d22",
+        "Rerank",
+        "LLM\u5f15\u7528\u56de\u7b54"
+      ],
+      "accent": "#0f766e",
+      "accent2": "#2563eb"
+    },
+    {
+      "file": "D04_tool_agent_flow.png",
+      "title": "D04 Tool/Agent/Workflow\uff1a\u62a5\u9500\u5355\u72b6\u6001\u600e\u4e48\u67e5",
+      "subtitle": "\u610f\u56fe\u5206\u7c7b\u3001\u5de5\u5177\u8c03\u7528\u3001\u9274\u6743\u3001Workflow\u3001Agent\u7ea6\u675f",
+      "steps": [
+        "\u7528\u6237\u8be2\u95ee",
+        "\u610f\u56fe\u5206\u7c7b",
+        "\u9009\u62e9\u5de5\u5177",
+        "\u751f\u6210\u53c2\u6570",
+        "Schema\u6821\u9a8c",
+        "\u540e\u7aef\u9274\u6743",
+        "\u8c03\u7528\u4e1a\u52a1API",
+        "\u8fd4\u56de\u7ed3\u679c",
+        "\u6a21\u578b\u6574\u7406",
+        "\u4eba\u5de5\u786e\u8ba4"
+      ],
+      "accent": "#c2410c",
+      "accent2": "#4f46e5"
+    },
+    {
+      "file": "D05_memory_multimodal_flow.png",
+      "title": "D05 \u591a\u8f6e\u8bb0\u5fc6\u4e0e\u591a\u6a21\u6001\uff1a\u8ffd\u95ee\u52a0\u53d1\u7968\u56fe\u7247",
+      "subtitle": "\u4f1a\u8bdd\u3001\u5386\u53f2\u6458\u8981\u3001OCR\u3001\u7ed3\u6784\u5316\u62bd\u53d6\u3001\u591a\u6a21\u6001RAG",
+      "steps": [
+        "\u7b2c\u4e00\u8f6e\u95ee\u9898",
+        "\u4fdd\u5b58\u4f1a\u8bdd",
+        "RAG\u56de\u7b54",
+        "\u7528\u6237\u8ffd\u95ee",
+        "\u89e3\u6790\u4e0a\u4e0b\u6587",
+        "\u4e0a\u4f20\u56fe\u7247",
+        "OCR\u8bc6\u522b",
+        "\u7ed3\u6784\u5316\u62bd\u53d6",
+        "\u68c0\u7d22\u5236\u5ea6",
+        "\u5224\u65ad\u8fd4\u56de"
+      ],
+      "accent": "#be185d",
+      "accent2": "#0891b2"
+    },
+    {
+      "file": "E01_gateway_stability_flow.png",
+      "title": "E01 \u6a21\u578b\u7f51\u5173\u4e0e\u7a33\u5b9a\u6027\uff1a\u5f3a\u6a21\u578b\u8d85\u65f6\u600e\u4e48\u529e",
+      "subtitle": "\u8def\u7531\u3001\u914d\u989d\u3001\u91cd\u8bd5\u3001\u7194\u65ad\u3001\u964d\u7ea7\u3001\u6210\u672c\u89c2\u6d4b",
+      "steps": [
+        "\u4e1a\u52a1\u8bf7\u6c42",
+        "\u6a21\u578b\u7f51\u5173",
+        "\u914d\u989d\u68c0\u67e5",
+        "\u6a21\u578b\u8def\u7531",
+        "\u5065\u5eb7\u5224\u65ad",
+        "\u8c03\u7528\u6a21\u578b",
+        "\u8d85\u65f6\u91cd\u8bd5",
+        "\u7194\u65ad\u964d\u7ea7",
+        "\u8fd4\u56de\u515c\u5e95",
+        "\u8bb0\u5f55\u6210\u672c"
+      ],
+      "accent": "#1d4ed8",
+      "accent2": "#dc2626"
+    },
+    {
+      "file": "E02_data_vector_flow.png",
+      "title": "E02 \u6570\u636e\u5de5\u7a0b\u4e0e\u5411\u91cf\u5e93\uff1a\u5236\u5ea6\u66f4\u65b0\u5982\u4f55\u4e0d\u7b54\u65e7\u7b54\u6848",
+      "subtitle": "\u7248\u672c\u3001\u6e05\u6d17\u3001metadata\u3001\u7d22\u5f15\u3001\u7070\u5ea6\u3001\u5220\u9664\u65e7\u5411\u91cf",
+      "steps": [
+        "\u65b0\u7248\u6587\u6863",
+        "\u8ba1\u7b97\u7248\u672c",
+        "\u89e3\u6790\u6e05\u6d17",
+        "\u5207Chunk",
+        "\u5199metadata",
+        "\u751f\u6210\u5411\u91cf",
+        "\u65b0\u7d22\u5f15",
+        "\u7070\u5ea6\u5207\u6362",
+        "\u5220\u9664\u65e7\u5411\u91cf",
+        "\u8d28\u91cf\u68c0\u67e5"
+      ],
+      "accent": "#047857",
+      "accent2": "#f59e0b"
+    },
+    {
+      "file": "E03_eval_llmops_flow.png",
+      "title": "E03 \u8bc4\u6d4b\u4e0eLLMOps\uff1a\u600e\u4e48\u8bc1\u660eRAG\u53d8\u597d\u4e86",
+      "subtitle": "Golden Dataset\u3001Recall@K\u3001Judge\u3001\u7070\u5ea6\u3001BadCase\u95ed\u73af",
+      "steps": [
+        "\u6536\u96c6\u95ee\u9898",
+        "\u6784\u5efa\u8bc4\u6d4b\u96c6",
+        "\u6807\u6ce8\u7b54\u6848",
+        "\u8dd1\u65e7\u7b56\u7565",
+        "\u8dd1\u65b0\u7b56\u7565",
+        "\u68c0\u7d22\u6307\u6807",
+        "\u751f\u6210\u8bc4\u4f30",
+        "\u6210\u672c\u5ef6\u8fdf",
+        "\u7070\u5ea6\u4e0a\u7ebf",
+        "BadCase\u56de\u6d41"
+      ],
+      "accent": "#7c3aed",
+      "accent2": "#16a34a"
+    },
+    {
+      "file": "E04_security_flow.png",
+      "title": "E04 \u5b89\u5168\u5408\u89c4\uff1a\u6076\u610fPrompt\u5982\u4f55\u9632",
+      "subtitle": "\u8f93\u5165\u68c0\u6d4b\u3001\u6743\u9650\u8fc7\u6ee4\u3001\u5de5\u5177\u9274\u6743\u3001\u8131\u654f\u3001\u5ba1\u8ba1",
+      "steps": [
+        "\u6076\u610f\u8f93\u5165",
+        "\u98ce\u9669\u68c0\u6d4b",
+        "\u8ba4\u8bc1\u8eab\u4efd",
+        "ACL\u67e5\u8be2",
+        "filter\u68c0\u7d22",
+        "\u5de5\u5177\u767d\u540d\u5355",
+        "\u8d44\u6e90\u9274\u6743",
+        "\u8f93\u51fa\u8131\u654f",
+        "\u62d2\u7b54/\u8fd4\u56de",
+        "\u5ba1\u8ba1\u65e5\u5fd7"
+      ],
+      "accent": "#b91c1c",
+      "accent2": "#334155"
+    },
+    {
+      "file": "E05_deploy_cost_flow.png",
+      "title": "E05 \u90e8\u7f72\u63a8\u7406\u4e0e\u6210\u672c\uff1a10\u4e07\u6b21\u8c03\u7528\u600e\u4e48\u4f18\u5316",
+      "subtitle": "API/\u81ea\u90e8\u7f72\u3001\u63a8\u7406\u670d\u52a1\u3001GPU\u3001\u7f13\u5b58\u3001\u6a21\u578b\u5206\u7ea7\u3001\u7070\u5ea6",
+      "steps": [
+        "\u8c03\u7528\u589e\u957f",
+        "\u5206\u6790\u65e5\u5fd7",
+        "\u6210\u672c\u5ef6\u8fdf",
+        "API\u8bc4\u4f30",
+        "\u81ea\u90e8\u7f72\u8bc4\u4f30",
+        "\u63a8\u7406\u670d\u52a1",
+        "Docker/K8s",
+        "\u6a21\u578b\u5206\u7ea7",
+        "\u7f13\u5b58\u538b\u7f29",
+        "\u7070\u5ea6\u56de\u6eda"
+      ],
+      "accent": "#0e7490",
+      "accent2": "#84cc16"
+    },
+    {
+      "file": "F01_project_flow.png",
+      "title": "F01 \u4e3b\u9879\u76ee\uff1a\u4f01\u4e1a\u77e5\u8bc6\u5e93\u95ee\u7b54\u600e\u4e48\u8bb2",
+      "subtitle": "\u80cc\u666f\u3001\u5165\u5e93\u3001\u95ee\u7b54\u3001\u5de5\u7a0b\u96be\u70b9\u3001\u8bc4\u6d4b\u95ed\u73af",
+      "steps": [
+        "\u9879\u76ee\u80cc\u666f",
+        "\u521b\u5efa\u77e5\u8bc6\u5e93",
+        "\u4e0a\u4f20\u6587\u6863",
+        "\u5f02\u6b65\u5165\u5e93",
+        "\u5411\u91cfready",
+        "\u7528\u6237\u63d0\u95ee",
+        "\u6df7\u5408\u68c0\u7d22",
+        "\u6a21\u578b\u751f\u6210",
+        "\u6d41\u5f0f\u5f15\u7528",
+        "\u53cd\u9988\u4f18\u5316"
+      ],
+      "accent": "#2563eb",
+      "accent2": "#22c55e"
+    },
+    {
+      "file": "F02_project_pool_flow.png",
+      "title": "F02 \u5907\u9009\u9879\u76ee\u5e93\uff1a\u9879\u76ee\u7ec4\u5408\u600e\u4e48\u8986\u76d6\u5c97\u4f4d\u80fd\u529b",
+      "subtitle": "\u77e5\u8bc6\u5e93\u3001\u5ba2\u670d\u3001\u6587\u6863\u89e3\u6790\u3001\u4ee3\u7801\u95ee\u7b54\u5404\u6709\u4fa7\u91cd",
+      "steps": [
+        "\u9879\u76ee\u6c60",
+        "\u77e5\u8bc6\u5e93\u95ee\u7b54",
+        "\u667a\u80fd\u5ba2\u670d",
+        "\u6587\u6863\u89e3\u6790",
+        "\u4ee3\u7801\u95ee\u7b54",
+        "RAG\u80fd\u529b",
+        "Tool\u80fd\u529b",
+        "OCR\u62bd\u53d6",
+        "\u4ee3\u7801\u68c0\u7d22",
+        "\u5dee\u5f02\u5316\u8868\u8fbe"
+      ],
+      "accent": "#9333ea",
+      "accent2": "#f59e0b"
+    },
+    {
+      "file": "F03_system_design_flow.png",
+      "title": "F03 \u7cfb\u7edf\u8bbe\u8ba1\uff1a\u9762\u8bd5\u9898\u600e\u4e48\u6309\u987a\u5e8f\u56de\u7b54",
+      "subtitle": "\u9700\u6c42\u6f84\u6e05\u3001\u67b6\u6784\u3001\u94fe\u8def\u3001\u5b58\u50a8\u3001\u7a33\u5b9a\u6027\u3001\u5b89\u5168\u3001\u8bc4\u6d4b",
+      "steps": [
+        "\u9700\u6c42\u6f84\u6e05",
+        "\u603b\u4f53\u67b6\u6784",
+        "\u5165\u5e93\u94fe\u8def",
+        "\u95ee\u7b54\u94fe\u8def",
+        "\u5b58\u50a8\u8bbe\u8ba1",
+        "\u9ad8\u5e76\u53d1",
+        "\u7a33\u5b9a\u6027",
+        "\u5b89\u5168\u6743\u9650",
+        "\u8bc4\u6d4b\u76d1\u63a7",
+        "\u6269\u5c55\u4f18\u5316"
+      ],
+      "accent": "#1e3a8a",
+      "accent2": "#0f766e"
+    },
+    {
+      "file": "F04_followup_flow.png",
+      "title": "F04 \u9ad8\u9891\u8ffd\u95ee\uff1a\u6240\u6709\u8ffd\u95ee\u90fd\u56de\u5230\u9879\u76ee\u94fe\u8def",
+      "subtitle": "MQ\u3001RAG\u3001\u6743\u9650\u3001\u6a21\u578b\u7f51\u5173\u3001\u6210\u672c\u3001\u8bc4\u6d4b\u4e00\u56fe\u4e32\u8d77",
+      "steps": [
+        "\u9879\u76ee\u8ffd\u95ee",
+        "\u6587\u6863\u5f02\u6b65",
+        "MQ\u5e42\u7b49",
+        "RAG\u4e0d\u51c6",
+        "\u6743\u9650\u8fc7\u6ee4",
+        "\u6a21\u578b\u8d85\u65f6",
+        "\u6210\u672c\u4f18\u5316",
+        "\u6548\u679c\u8bc4\u6d4b",
+        "\u5b89\u5168\u95ee\u9898",
+        "\u603b\u7ed3\u56de\u94fe\u8def"
+      ],
+      "accent": "#9f1239",
+      "accent2": "#2563eb"
+    }
+  ]
+}
