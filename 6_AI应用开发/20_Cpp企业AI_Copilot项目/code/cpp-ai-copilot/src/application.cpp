@@ -2,19 +2,13 @@
 
 #include "copilot/http.hpp"
 
-#if __has_include("nlohmann/json.hpp")
 #include "nlohmann/json.hpp"
-#define COPILOT_HAS_NLOHMANN_JSON 1
-#else
-#define COPILOT_HAS_NLOHMANN_JSON 0
-#endif
 
 #include <optional>
 #include <string>
 
 namespace copilot {
 
-#if COPILOT_HAS_NLOHMANN_JSON
 static std::optional<std::string> extract_message(const std::string& body) {
     try {
         const auto json = nlohmann::json::parse(body);
@@ -39,66 +33,14 @@ static std::string make_chat_response_body(const std::string& message) {
     response_body["data"]["reply"] = "我收到了：" + message;
     return response_body.dump();
 }
-#else
-static std::optional<std::string> extract_message(const std::string& body) {
-    const std::string key = R"("message")";
-    auto pos = body.find(key);
-    if (pos == std::string::npos) {
-        return std::nullopt;
-    }
 
-    pos = body.find(':', pos + key.size());
-    if (pos == std::string::npos) {
-        return std::nullopt;
-    }
-
-    pos = body.find('"', pos + 1);
-    if (pos == std::string::npos) {
-        return std::nullopt;
-    }
-
-    std::string message;
-    bool escaping = false;
-    for (std::size_t index = pos + 1; index < body.size(); ++index) {
-        const char ch = body[index];
-        if (escaping) {
-            message.push_back(ch);
-            escaping = false;
-            continue;
-        }
-        if (ch == '\\') {
-            escaping = true;
-            continue;
-        }
-        if (ch == '"') {
-            if (message.empty()) {
-                return std::nullopt;
-            }
-            return message;
-        }
-        message.push_back(ch);
-    }
-
-    return std::nullopt;
+static std::string make_invalid_request_body(const std::string& message) {
+    nlohmann::json response_body;
+    response_body["code"] = "INVALID_REQUEST";
+    response_body["message"] = message;
+    response_body["data"] = nullptr;
+    return response_body.dump();
 }
-
-static std::string escape_json_string(const std::string& value) {
-    std::string escaped;
-    for (const char ch : value) {
-        if (ch == '"' || ch == '\\') {
-            escaped.push_back('\\');
-        }
-        escaped.push_back(ch);
-    }
-    return escaped;
-}
-
-static std::string make_chat_response_body(const std::string& message) {
-    return R"({"code":"OK","data":{"reply":"我收到了：)" +
-           escape_json_string(message) +
-           R"("}})";
-}
-#endif
 
 Router create_app_router() {
     Router router;              // 建一个空表
@@ -130,7 +72,7 @@ Router create_app_router() {
         const auto message = extract_message(request.body);
 
         if (!message.has_value()) {
-            return HttpResponse::json(400,  R"({"code":"INVALID_REQUEST","message":"message is required","data":null})");
+            return HttpResponse::json(400, make_invalid_request_body("message is required"));
         }
         
         return HttpResponse::json(

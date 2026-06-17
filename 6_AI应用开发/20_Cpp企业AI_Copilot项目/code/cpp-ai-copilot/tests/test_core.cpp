@@ -112,6 +112,48 @@ void test_chat_returns_400_when_message_missing() {
     assert(response.body.find("INVALID_REQUEST") != std::string::npos);
 }
 
+void test_chat_returns_400_when_message_is_not_string() {
+    Router router = create_app_router();
+
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"message":123})";
+
+    HttpResponse response = router.route(request);
+
+    assert(response.status_code == 400);
+    assert(response.body.find("INVALID_REQUEST") != std::string::npos);
+}
+
+void test_chat_returns_400_when_message_is_empty() {
+    Router router = create_app_router();
+
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"message":""})";
+
+    HttpResponse response = router.route(request);
+
+    assert(response.status_code == 400);
+    assert(response.body.find("INVALID_REQUEST") != std::string::npos);
+}
+
+void test_chat_returns_400_when_json_is_malformed() {
+    Router router = create_app_router();
+
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"message":"你好")";
+
+    HttpResponse response = router.route(request);
+
+    assert(response.status_code == 400);
+    assert(response.body.find("INVALID_REQUEST") != std::string::npos);
+}
+
 // 测了更常见的 {"message": "你好"}，也就是冒号后面带空格的情况
 void test_chat_accepts_space_after_message_colon() {
     Router router = create_app_router();
@@ -150,6 +192,9 @@ int main() {
     test_application_router_registers_health_route();
     test_chat_returns_reply_from_message();
     test_chat_returns_400_when_message_missing();
+    test_chat_returns_400_when_message_is_not_string();
+    test_chat_returns_400_when_message_is_empty();
+    test_chat_returns_400_when_json_is_malformed();
     test_chat_accepts_space_after_message_colon();
     test_chat_handles_escaped_quotes_in_message();
 }
