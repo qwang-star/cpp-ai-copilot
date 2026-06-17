@@ -3,7 +3,6 @@
 #include "copilot/http.hpp"
 #include "copilot/router.hpp"
 
-#include <iostream>
 #include <cassert>
 #include <cstdio>
 #include <fstream>
@@ -81,6 +80,7 @@ void test_application_router_registers_health_route() {
     assert(response.body.find(R"("version":"0.1.0")") != std::string::npos);
 }
 
+// 测 {"message":"你好"}
 void test_chat_returns_reply_from_message() {
     Router router = create_app_router();
 
@@ -112,6 +112,36 @@ void test_chat_returns_400_when_message_missing() {
     assert(response.body.find("INVALID_REQUEST") != std::string::npos);
 }
 
+// 测了更常见的 {"message": "你好"}，也就是冒号后面带空格的情况
+void test_chat_accepts_space_after_message_colon() {
+    Router router = create_app_router();
+
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"message": "你好"})";
+
+    HttpResponse response = router.route(request);
+
+    assert(response.status_code == 200);
+    assert(response.body.find("我收到了：你好") != std::string::npos);
+}
+
+// 测了 {"message":"他说\"你好\""}，也就是 message 里带转义引号的情况
+void test_chat_handles_escaped_quotes_in_message() {
+    Router router = create_app_router();
+
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"message":"他说\"你好\""})";
+
+    HttpResponse response = router.route(request);
+
+    assert(response.status_code == 200);
+    assert(response.body.find(R"(我收到了：他说\"你好\")") != std::string::npos);
+}
+
 int main() {
     test_json_response_has_status_content_type_and_body();
     test_router_returns_health_response();
@@ -120,4 +150,6 @@ int main() {
     test_application_router_registers_health_route();
     test_chat_returns_reply_from_message();
     test_chat_returns_400_when_message_missing();
+    test_chat_accepts_space_after_message_colon();
+    test_chat_handles_escaped_quotes_in_message();
 }
