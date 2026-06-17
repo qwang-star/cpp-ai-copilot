@@ -8,4 +8,4 @@
 *.obj
 *.o
 *.log
-
+.vscode/
