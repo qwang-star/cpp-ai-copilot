@@ -1,0 +1,3 @@
+E:\Software\MySY2\ucrt64\bin\cmake.exe -E rm -f CMakeFiles\cmTC_97e00.dir/objects.a
+E:\Software\MySY2\ucrt64\bin\ar.exe qc CMakeFiles\cmTC_97e00.dir/objects.a @CMakeFiles\cmTC_97e00.dir\objects1.rsp
+E:\Software\MySY2\ucrt64\bin\c++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\cmTC_97e00.dir/objects.a -Wl,--no-whole-archive -o cmTC_97e00.exe -Wl,--out-implib,libcmTC_97e00.dll.a -Wl,--major-image-version,0,--minor-image-version,0
