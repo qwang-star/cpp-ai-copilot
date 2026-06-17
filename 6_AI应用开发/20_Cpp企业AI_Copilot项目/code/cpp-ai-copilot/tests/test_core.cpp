@@ -3,6 +3,7 @@
 #include "copilot/http.hpp"
 #include "copilot/router.hpp"
 
+#include <iostream>
 #include <cassert>
 #include <cstdio>
 #include <fstream>
@@ -80,10 +81,43 @@ void test_application_router_registers_health_route() {
     assert(response.body.find(R"("version":"0.1.0")") != std::string::npos);
 }
 
+void test_chat_returns_reply_from_message() {
+    Router router = create_app_router();
+
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"message":"你好"})";
+
+    HttpResponse response = router.route(request);
+
+    //std::cout << "response.body = [" << response.body << "]\n";
+
+    assert(response.status_code == 200);
+    assert(response.body.find(R"("code":"OK")") != std::string::npos);
+    assert(response.body.find("我收到了：你好") != std::string::npos);
+}
+
+void test_chat_returns_400_when_message_missing() {
+    Router router = create_app_router();
+
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"text":"你好"})";
+
+    HttpResponse response = router.route(request);
+
+    assert(response.status_code == 400);
+    assert(response.body.find("INVALID_REQUEST") != std::string::npos);
+}
+
 int main() {
     test_json_response_has_status_content_type_and_body();
     test_router_returns_health_response();
     test_router_returns_404_for_unknown_route();
     test_config_loads_key_value_file();
     test_application_router_registers_health_route();
+    test_chat_returns_reply_from_message();
+    test_chat_returns_400_when_message_missing();
 }

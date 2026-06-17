@@ -17,7 +17,7 @@ code/cpp-ai-copilot/src/simple_server.cpp
 ```
 
 ---
-
+![[Pasted image 20260616154334.png]]
 ## 1. simple_server.hpp 全貌
 
 源码：
@@ -306,9 +306,59 @@ SimpleHttpServer::SimpleHttpServer(AppConfig config, Router router, Logger logge
 
 ### 6.1 开店营业（socket → bind → listen）
 
+**① 什么是 socket？**
+
+socket 就是操作系统提供的"电话号码"——程序用它来跟网络上的另一台电脑通信。
+
+类比打电话：
+
+```text
+你打电话给朋友：
+  你：拿起电话 → 拨号 → 接通 → 说话 → 挂断
+
+程序用 socket 通信：
+  服务器：socket() → bind() → listen() → accept() → recv()/send() → close()
+```
+
+socket 就是**那部电话机**：
+
+| 步骤 | 函数 | 打电话类比 |
+|------|------|----------|
+| 买电话机 | `socket()` | 去营业厅买一部电话 |
+| 贴号码 | `bind()` | 给电话机分配号码 "127.0.0.1:8080" |
+| 开响铃 | `listen()` | 打开响铃，等人打进来 |
+| 接电话 | `accept()` | 电话响了，接起来，拿到一根"专线" |
+| 听/说 | `recv()` / `send()` | 专线通话 |
+| 挂断 | `close()` | 挂掉，专线释放 |
+回到 `simple_server.cpp` 的"开店四部曲"：
+
+```cpp
+// 1. socket()  — 买电话机
+SocketHandle server_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+// 2. bind()    — 贴上号码 "127.0.0.1:8080"
+bind(server_socket, &address, sizeof(address));
+
+// 3. listen()  — 开响铃，等人打进来
+listen(server_socket, SOMAXCONN);
+
+// 4. accept()  — 电话响了，接起来，拿到这次通话的"专线"
+SocketHandle client_socket = accept(server_socket, ...);
+
+// 5. recv()    — 用专线听对方说话
+recv(client_socket, buffer.data(), ...);
+
+// 6. send()    — 用专线回复
+send(client_socket, ...);
+
+// 7. close()   — 挂断
+close_socket(client_socket);
+```
+关键：`server_socket` 只有一部（大厅的公用电话，只负责等电话响），每次 `accept()` 后拿到一个新的 `client_socket`（这次通话的专线）。一个服务器可以同时跟多个客户端通话，每通电话各有一根专线，互不干扰。
+
 ```cpp
 int SimpleHttpServer::run() {
-    WinsockSession winsock;                                    // ① 初始化网络
+    WinsockSession winsock;                                    // 初始化网络
 ```
 
 **② 创建 socket：**
@@ -370,6 +420,13 @@ int SimpleHttpServer::run() {
 ```
 
 类比：拿起话筒，进入"等人打进来"的状态。
+
+- `listen` 函数用于将服务器套接字设置为监听状态，准备接受客户端的连接请求。
+    
+- 该函数通常在创建和绑定套接字后调用，确保服务器能够接收来自网络的连接。
+    
+- 一旦调用成功，服务器将进入等待状态，直到有客户端发起连接请求，随后进行处理。
+- **套接字 = socket**，是同一个东西的两个名字。
 
 **⑦ 打个招呼：**
 

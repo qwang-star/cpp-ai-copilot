@@ -1,5 +1,5 @@
 CXX ?= g++
-CXXFLAGS ?= -std=c++20 -Wall -Wextra -pedantic -O2
+CXXFLAGS ?= -std=c++20 -Wall -Wextra -pedantic -O2 -finput-charset=UTF-8 -fexec-charset=UTF-8 -Iinclude
 INCLUDES := -Iinclude
 
 SRC := src/application.cpp src/config.cpp src/http.cpp src/router.cpp src/logger.cpp
@@ -19,7 +19,7 @@ endif
 all: build/cpp-ai-copilot$(EXE)
 
 build:
-	mkdir -p build
+	@if not exist build mkdir build
 
 build/cpp-ai-copilot$(EXE): build $(SERVER_SRC)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(SERVER_SRC) -o $@ $(SERVER_LIBS)
@@ -34,4 +34,4 @@ run: build/cpp-ai-copilot$(EXE)
 	./build/cpp-ai-copilot$(EXE) config/app.env
 
 clean:
-	rm -rf build
+	@if exist build rmdir /s /q build
