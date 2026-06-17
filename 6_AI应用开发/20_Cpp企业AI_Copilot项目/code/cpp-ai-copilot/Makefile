@@ -2,7 +2,7 @@ CXX ?= g++
 CXXFLAGS ?= -std=c++20 -Wall -Wextra -pedantic -O2 -finput-charset=UTF-8 -fexec-charset=UTF-8
 INCLUDES := -Iinclude -Ithird_party
 
-SRC := src/application.cpp src/config.cpp src/http.cpp src/router.cpp src/logger.cpp
+SRC := src/api_response.cpp src/application.cpp src/chat_service.cpp src/config.cpp src/error_code.cpp src/http.cpp src/router.cpp src/logger.cpp
 SERVER_SRC := src/main.cpp src/simple_server.cpp $(SRC)
 TEST_SRC := tests/test_core.cpp $(SRC)
 

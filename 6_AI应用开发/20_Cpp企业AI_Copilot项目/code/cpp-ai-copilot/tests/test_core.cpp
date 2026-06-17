@@ -1,5 +1,8 @@
+#include "copilot/api_response.hpp"
 #include "copilot/application.hpp"
+#include "copilot/chat_service.hpp"
 #include "copilot/config.hpp"
+#include "copilot/error_code.hpp"
 #include "copilot/http.hpp"
 #include "copilot/router.hpp"
 
@@ -80,6 +83,29 @@ void test_application_router_registers_health_route() {
     assert(response.body.find(R"("version":"0.1.0")") != std::string::npos);
 }
 
+void test_error_code_to_string() {
+    assert(std::string(to_string(ErrorCode::ok)) == "OK");
+    assert(std::string(to_string(ErrorCode::invalid_request)) == "INVALID_REQUEST");
+}
+
+void test_api_response_builds_success_body() {
+    nlohmann::json data;
+    data["reply"] = "我收到了：你好";
+
+    const std::string body = make_success_body(data);
+
+    assert(body.find(R"("code":"OK")") != std::string::npos);
+    assert(body.find("我收到了：你好") != std::string::npos);
+}
+
+void test_api_response_builds_error_body() {
+    const std::string body = make_error_body(ErrorCode::invalid_request, "message is required");
+
+    assert(body.find(R"("code":"INVALID_REQUEST")") != std::string::npos);
+    assert(body.find(R"("message":"message is required")") != std::string::npos);
+    assert(body.find(R"("data":null)") != std::string::npos);
+}
+
 // 测 {"message":"你好"}
 void test_chat_returns_reply_from_message() {
     Router router = create_app_router();
@@ -95,6 +121,18 @@ void test_chat_returns_reply_from_message() {
 
     assert(response.status_code == 200);
     assert(response.body.find(R"("code":"OK")") != std::string::npos);
+    assert(response.body.find("我收到了：你好") != std::string::npos);
+}
+
+void test_chat_service_returns_reply_from_message() {
+    HttpRequest request;
+    request.method = "POST";
+    request.path = "/api/v1/chat";
+    request.body = R"({"message":"你好"})";
+
+    HttpResponse response = handle_chat_request(request);
+
+    assert(response.status_code == 200);
     assert(response.body.find("我收到了：你好") != std::string::npos);
 }
 
@@ -190,7 +228,11 @@ int main() {
     test_router_returns_404_for_unknown_route();
     test_config_loads_key_value_file();
     test_application_router_registers_health_route();
+    test_error_code_to_string();
+    test_api_response_builds_success_body();
+    test_api_response_builds_error_body();
     test_chat_returns_reply_from_message();
+    test_chat_service_returns_reply_from_message();
     test_chat_returns_400_when_message_missing();
     test_chat_returns_400_when_message_is_not_string();
     test_chat_returns_400_when_message_is_empty();
